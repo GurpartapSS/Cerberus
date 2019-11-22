@@ -4,3 +4,9 @@ It maps the keywords frequency to the categories and picks up random reponse fro
 Pretty Naive but a good start.
 
 for the development, I followed https://techwithtim.net/tutorials/ai-chatbot/ that provided steps to build the chatbot system and the reference files.
+
+New LSTM based model added. To use the model:
+
+modify the "intents.json" file.
+Run the training model, it has the code to start the chat in the end. 
+Training and Chat modules will be seperated in next commit.
