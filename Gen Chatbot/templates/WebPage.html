@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script>
+        async  function getUserAsync() 
+{
+  //debugger;
+  let response = await fetch(`http://127.0.0.1:5000/`);
+  let data = await response.json();
+  console.log(data.ans)
+  return String(data.ans);
+}
+                function talk() {
+                var user = document.getElementById("userBox").value;
+                document.getElementById("userBox").value = "";
+                document.getElementById("chatLog").innerHTML += user+"<br>";
+                //getUserAsync().then(data => console.log(data));
+                getUserAsync(); 
+                var otherthing = "yaha nayi value dalni h from fetch"
+                //var otherthing = getUserAsync();
+                document.getElementById("chatLog").innerHTML += otherthing+"<br>";
+                }
+        </script>
+    </head>
+    <body>
+        <p id="chatLog">- - C H A T - -<br></p>
+        <input id="userBox" type="text" onkeydown="if (event.keyCode == 13) {talk()}">
+    </body>
+</html>
