@@ -1,28 +1,34 @@
 <html>
     <head>
         <script>
-        async  function getUserAsync() 
+        async  function getUserAsync(quest) 
 {
   //debugger;
-  let response = await fetch(`http://127.0.0.1:5000/`);
+  //var string = "how%20much%20i%20need%20to%20pay";
+  var url = "http://127.0.0.1:5000/test_connection/in="+quest;
+  let response = await fetch(url);
   let data = await response.json();
-  console.log(data.ans)
-  return String(data.ans);
+  //console.log(data.ans)
+  var ott = data.ans;
+    return ott;
+}
+function ret(astha){
+  document.getElementById("chatLog").innerHTML += "UG: "+astha+"<br>"+"<br>";
 }
                 function talk() {
                 var user = document.getElementById("userBox").value;
                 document.getElementById("userBox").value = "";
-                document.getElementById("chatLog").innerHTML += user+"<br>";
-                //getUserAsync().then(data => console.log(data));
-                getUserAsync(); 
-                var otherthing = "yaha nayi value dalni h from fetch"
+                document.getElementById("chatLog").innerHTML += "You: "+user+"<br>"+"<br>";
+                getUserAsync(user).then(ott => ret(ott));
+                //getUserAsync(); 
+                //var otherthing = "yaha nayi value dalni h from fetch"
                 //var otherthing = getUserAsync();
-                document.getElementById("chatLog").innerHTML += otherthing+"<br>";
+                //document.getElementById("chatLog").innerHTML += otherthing+"<br>";
                 }
         </script>
     </head>
     <body>
-        <p id="chatLog">- - C H A T - -<br></p>
+        <p id="chatLog">- - University CHATBOT - -<br></p>
         <input id="userBox" type="text" onkeydown="if (event.keyCode == 13) {talk()}">
     </body>
 </html>
